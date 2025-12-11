@@ -1,0 +1,65 @@
+---
+import ContactFormCard from "./ContactFormCard.astro";
+import BusinessInfoCard from "./BusinessInfoCard.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { COMPANY } from "../consts";
+
+// Get current language and translation function
+const lang = getLangFromUrl(Astro.url, Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<section id="contact" class="container mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold text-center mb-8">
+        {t("contact.title")}
+    </h2>
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Contact Form -->
+        <ContactFormCard />
+
+        <!-- Business Information -->
+        <BusinessInfoCard />
+    </div>
+</section>
+
+<script
+    define:vars={{
+        contactEmail: COMPANY.email,
+        emailSubject: t("contact.email.subject"),
+        emailName: t("contact.email.name"),
+        emailEmail: t("contact.email.email"),
+        emailPhone: t("contact.email.phone"),
+        emailMessage: t("contact.email.message"),
+    }}
+>
+    // Handle form submission with mailto:
+    const contactForm = document.getElementById("contact-form");
+
+    if (contactForm) {
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(contactForm);
+            const name = formData.get("name") || "";
+            const email = formData.get("email") || "";
+            const phone = formData.get("phone") || "";
+            const message = formData.get("message") || "";
+
+            // Construct email subject
+            const subject = `${emailSubject} ${name}`;
+
+            // Construct email body
+            const body = `${emailName} ${name}
+${emailEmail} ${email}
+${phone ? `${emailPhone} ${phone}\n` : ""}${emailMessage}
+${message}`;
+
+            // Create mailto URL with encoded parameters
+            const mailtoUrl = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Open user's email client
+            window.location.href = mailtoUrl;
+        });
+    }
+</script>

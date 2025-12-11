@@ -1,0 +1,87 @@
+/* Project-specific small utilities */
+.container-prose {
+    max-width: 72ch;
+}
+
+.card-surface {
+    background: var(--card);
+    color: var(--card-foreground);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: saturate(140%) blur(6px);
+    transition: box-shadow 250ms ease, transform 200ms ease;
+}
+
+.card-surface:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+/* Dark theme: stronger base shadow, lighter on hover with accent glow */
+.dark .card-surface,
+[data-theme="dark"] .card-surface {
+    box-shadow:
+        0 14px 40px rgba(0, 0, 0, 0.55),
+        0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.dark .card-surface:hover,
+[data-theme="dark"] .card-surface:hover {
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.35),
+        var(--glow-accent);
+}
+
+.elevate-lg {
+    box-shadow: var(--shadow-lg);
+}
+
+.elevate-xl {
+    box-shadow: var(--shadow-xl);
+}
+
+.elevate-2xl {
+    box-shadow: var(--shadow-2xl);
+}
+
+/* Screen reader only - for accessibility announcements */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Mobile-first responsive utilities */
+.container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+/* Touch-friendly minimum sizes for interactive elements */
+button,
+a[role="button"],
+input[type="button"],
+input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+}

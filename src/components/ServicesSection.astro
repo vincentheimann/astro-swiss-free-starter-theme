@@ -1,0 +1,110 @@
+---
+import {
+    Card,
+    CardHeader,
+    CardTitle,
+    CardDescription,
+    CardContent,
+} from "@/components/starwind/card";
+import { Button } from "@/components/starwind/button";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+// Import Tabler icons for services
+import ConsultationIcon from "@tabler/icons/outline/message-circle.svg";
+import DesignIcon from "@tabler/icons/outline/palette.svg";
+import InstallationIcon from "@tabler/icons/outline/tool.svg";
+import MaintenanceIcon from "@tabler/icons/outline/settings.svg";
+import RenovationIcon from "@tabler/icons/outline/refresh.svg";
+import CustomIcon from "@tabler/icons/outline/puzzle.svg";
+
+// Get current language and translation function
+const lang = getLangFromUrl(Astro.url, Astro.currentLocale);
+const t = useTranslations(lang);
+
+// Define services configuration with icons
+const services = [
+    {
+        icon: ConsultationIcon,
+        titleKey: "services.service1.title" as const,
+        descriptionKey: "services.service1.description" as const,
+    },
+    {
+        icon: DesignIcon,
+        titleKey: "services.service2.title" as const,
+        descriptionKey: "services.service2.description" as const,
+    },
+    {
+        icon: InstallationIcon,
+        titleKey: "services.service3.title" as const,
+        descriptionKey: "services.service3.description" as const,
+    },
+    {
+        icon: MaintenanceIcon,
+        titleKey: "services.service4.title" as const,
+        descriptionKey: "services.service4.description" as const,
+    },
+    {
+        icon: RenovationIcon,
+        titleKey: "services.service5.title" as const,
+        descriptionKey: "services.service5.description" as const,
+    },
+    {
+        icon: CustomIcon,
+        titleKey: "services.service6.title" as const,
+        descriptionKey: "services.service6.description" as const,
+    },
+];
+---
+
+<section id="services" class="container mx-auto px-4 py-16">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-2">
+            {t("services.title")}
+        </h2>
+        <p class="text-muted-foreground text-lg">
+            {t("services.subtitle")}
+        </p>
+    </div>
+
+    <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+    >
+        {
+            services.map((service) => (
+                <Card class="flex flex-col h-full hover:shadow-lg transition-shadow duration-300">
+                    <CardHeader>
+                        <div class="mb-4 text-primary">
+                            <service.icon class="w-12 h-12" />
+                        </div>
+                        <CardTitle class="text-xl">
+                            {t(service.titleKey)}
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent class="flex-grow">
+                        <CardDescription class="text-base">
+                            {t(service.descriptionKey)}
+                        </CardDescription>
+                    </CardContent>
+                </Card>
+            ))
+        }
+    </div>
+
+    <div class="text-center mt-12">
+        <Button href="#contact" variant="default" size="lg">
+            {t("services.cta")}
+        </Button>
+    </div>
+</section>
+
+<style>
+    /* Ensure icons inherit color from parent */
+    :global(.text-primary svg) {
+        color: inherit;
+    }
+
+    /* Smooth hover effect for cards */
+    :global(.hover\:shadow-lg) {
+        transition: box-shadow 0.3s ease-in-out;
+    }
+</style>

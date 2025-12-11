@@ -1,0 +1,314 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { Card, CardContent } from "@/components/starwind/card";
+import { Button } from "@/components/starwind/button";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselPrevious,
+    CarouselNext,
+} from "@/components/starwind/carousel";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getPortfolio } from "../data/portfolio";
+
+// Get current language and translation function
+const lang = getLangFromUrl(Astro.url, Astro.currentLocale);
+const t = useTranslations(lang);
+
+// Get portfolio content for current language
+const portfolio = getPortfolio(lang);
+
+// Helper function to get image src (handles both ImageMetadata and string URLs)
+const getImageSrc = (image: string | ImageMetadata): string => {
+    return typeof image === "string" ? image : image.src;
+};
+---
+
+<section id="portfolio" class="container mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold text-center mb-8">
+        {t("portfolio.title")}
+    </h2>
+    <Carousel class="max-w-5xl mx-auto">
+        <CarouselContent>
+            {
+                portfolio.map((project, index) => (
+                    <CarouselItem class="md:basis-1/2 lg:basis-1/3">
+                        <div class="p-2">
+                            <Card>
+                                <CardContent class="p-0">
+                                    <div
+                                        class="cursor-pointer"
+                                        data-lightbox-image={getImageSrc(
+                                            project.image,
+                                        )}
+                                        data-lightbox-title={project.title}
+                                        data-lightbox-index={index}
+                                    >
+                                        {typeof project.image === "string" ? (
+                                            <img
+                                                src={project.image}
+                                                alt={project.title}
+                                                width={800}
+                                                height={600}
+                                                class="w-full h-64 object-cover rounded-t-lg hover:opacity-90 transition-opacity"
+                                                loading="lazy"
+                                            />
+                                        ) : (
+                                            <Image
+                                                src={project.image}
+                                                alt={project.title}
+                                                width={800}
+                                                height={600}
+                                                class="w-full h-64 object-cover rounded-t-lg hover:opacity-90 transition-opacity"
+                                                loading="lazy"
+                                            />
+                                        )}
+                                    </div>
+                                    <div class="p-4">
+                                        <h3 class="font-semibold text-lg">
+                                            {project.title}
+                                        </h3>
+                                        <p class="text-sm text-muted-foreground mt-2 whitespace-pre-line">
+                                            {project.description}
+                                        </p>
+                                        {project.secondaryCtaText && (
+                                            <Button
+                                                variant="ghost"
+                                                size="sm"
+                                                class="mt-6"
+                                                href={project.secondaryCtaLink}
+                                                target="_blank"
+                                            >
+                                                {project.secondaryCtaText}
+                                            </Button>
+                                        )}
+                                        {project.primaryCtaText && (
+                                            <Button
+                                                variant="primary"
+                                                size="sm"
+                                                class="mt-6"
+                                                href={project.primaryCtaLink}
+                                                target="_blank"
+                                            >
+                                                {project.primaryCtaText}
+                                            </Button>
+                                        )}
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </CarouselItem>
+                ))
+            }
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+    </Carousel>
+
+    <!-- Lightbox Modal -->
+    <div
+        id="lightbox"
+        class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center opacity-0 transition-opacity duration-300"
+    >
+        <button
+            id="lightbox-close"
+            class="absolute top-4 right-4 text-white text-4xl font-bold hover:text-gray-300 transition-colors z-10"
+            aria-label="Close lightbox"
+        >
+            &times;
+        </button>
+
+        <!-- Previous Arrow -->
+        <button
+            id="lightbox-prev"
+            class="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground rounded-full p-2 transition-colors z-10"
+            aria-label="Previous image"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="m15 18-6-6 6-6"></path>
+            </svg>
+        </button>
+
+        <!-- Next Arrow -->
+        <button
+            id="lightbox-next"
+            class="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground rounded-full p-2 transition-colors z-10"
+            aria-label="Next image"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="m9 18 6-6-6-6"></path>
+            </svg>
+        </button>
+
+        <div class="flex flex-col items-center gap-4">
+            <img
+                id="lightbox-image"
+                src=""
+                alt=""
+                class="max-w-[90vw] max-h-[80vh] object-contain"
+            />
+            <div class="text-white text-center">
+                <h3 id="lightbox-title" class="text-xl font-semibold"></h3>
+                <p id="lightbox-counter" class="text-sm text-gray-300 mt-1"></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Lightbox functionality
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById(
+        "lightbox-image",
+    ) as HTMLImageElement;
+    const lightboxTitle = document.getElementById("lightbox-title");
+    const lightboxCounter = document.getElementById("lightbox-counter");
+    const lightboxClose = document.getElementById("lightbox-close");
+    const lightboxPrev = document.getElementById("lightbox-prev");
+    const lightboxNext = document.getElementById("lightbox-next");
+    const portfolioImages = document.querySelectorAll("[data-lightbox-image]");
+
+    let currentIndex = 0;
+    const totalImages = portfolioImages.length;
+
+    // Function to show image at specific index
+    const showImage = (index: number) => {
+        currentIndex = index;
+        const img = portfolioImages[currentIndex];
+        const imageSrc = img.getAttribute("data-lightbox-image");
+        const imageTitle = img.getAttribute("data-lightbox-title");
+
+        if (imageSrc && lightboxImage) {
+            lightboxImage.src = imageSrc;
+            lightboxImage.alt = imageTitle || "";
+            if (lightboxTitle) lightboxTitle.textContent = imageTitle || "";
+            if (lightboxCounter) {
+                lightboxCounter.textContent = `${currentIndex + 1} / ${totalImages}`;
+            }
+        }
+    };
+
+    // Open lightbox when clicking on portfolio images
+    portfolioImages.forEach((img, index) => {
+        img.addEventListener("click", () => {
+            if (lightbox) {
+                showImage(index);
+                lightbox.classList.remove("hidden");
+                lightbox.classList.add("flex");
+                // Trigger reflow for animation
+                void lightbox.offsetWidth;
+                lightbox.classList.remove("opacity-0");
+            }
+        });
+    });
+
+    // Navigate to previous image
+    const showPrevious = () => {
+        const newIndex =
+            currentIndex === 0 ? totalImages - 1 : currentIndex - 1;
+        showImage(newIndex);
+    };
+
+    // Navigate to next image
+    const showNext = () => {
+        const newIndex =
+            currentIndex === totalImages - 1 ? 0 : currentIndex + 1;
+        showImage(newIndex);
+    };
+
+    // Close lightbox function
+    const closeLightbox = () => {
+        if (lightbox) {
+            lightbox.classList.add("opacity-0");
+            setTimeout(() => {
+                lightbox.classList.add("hidden");
+                lightbox.classList.remove("flex");
+            }, 300);
+        }
+    };
+
+    // Event listeners for navigation buttons
+    lightboxPrev?.addEventListener("click", showPrevious);
+    lightboxNext?.addEventListener("click", showNext);
+
+    // Close on button click
+    lightboxClose?.addEventListener("click", closeLightbox);
+
+    // Close on backdrop click
+    lightbox?.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+        if (lightbox && !lightbox.classList.contains("hidden")) {
+            if (e.key === "Escape") {
+                closeLightbox();
+            } else if (e.key === "ArrowLeft") {
+                showPrevious();
+            } else if (e.key === "ArrowRight") {
+                showNext();
+            }
+        }
+    });
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const minSwipeDistance = 50; // minimum distance for a swipe
+
+    lightbox?.addEventListener(
+        "touchstart",
+        (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        },
+        { passive: true },
+    );
+
+    lightbox?.addEventListener(
+        "touchend",
+        (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        },
+        { passive: true },
+    );
+
+    const handleSwipe = () => {
+        const swipeDistance = touchEndX - touchStartX;
+
+        if (Math.abs(swipeDistance) > minSwipeDistance) {
+            if (swipeDistance > 0) {
+                // Swipe right - show previous
+                showPrevious();
+            } else {
+                // Swipe left - show next
+                showNext();
+            }
+        }
+    };
+</script>

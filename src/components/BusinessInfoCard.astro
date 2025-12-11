@@ -1,0 +1,160 @@
+---
+import {
+    Card,
+    CardHeader,
+    CardTitle,
+    CardDescription,
+    CardContent,
+} from "@/components/starwind/card";
+import { Button } from "@/components/starwind/button";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { COMPANY } from "../consts";
+
+// Import social media icons
+import LinkedinIcon from "@tabler/icons/outline/brand-linkedin.svg";
+import FacebookIcon from "@tabler/icons/outline/brand-facebook.svg";
+import InstagramIcon from "@tabler/icons/outline/brand-instagram.svg";
+import TwitterIcon from "@tabler/icons/outline/brand-x.svg";
+import GithubIcon from "@tabler/icons/outline/brand-github.svg";
+
+// Get current language and translation function
+const lang = getLangFromUrl(Astro.url, Astro.currentLocale);
+const t = useTranslations(lang);
+
+// Define social media configuration with icons
+const socialMediaConfig = [
+    {
+        key: "linkedin",
+        url: COMPANY.socials.linkedin,
+        icon: LinkedinIcon,
+        label: t("contact.info.socials.linkedin"),
+    },
+    {
+        key: "facebook",
+        url: COMPANY.socials.facebook,
+        icon: FacebookIcon,
+        label: t("contact.info.socials.facebook"),
+    },
+    {
+        key: "instagram",
+        url: COMPANY.socials.instagram,
+        icon: InstagramIcon,
+        label: t("contact.info.socials.instagram"),
+    },
+    {
+        key: "twitter",
+        url: COMPANY.socials.twitter,
+        icon: TwitterIcon,
+        label: t("contact.info.socials.twitter"),
+    },
+    {
+        key: "github",
+        url: COMPANY.socials.github,
+        icon: GithubIcon,
+        label: t("contact.info.socials.github"),
+    },
+];
+
+// Filter out empty social media links
+const activeSocials = socialMediaConfig.filter(
+    (social) => social.url && social.url.trim() !== "",
+);
+---
+
+<Card>
+    <CardHeader>
+        <CardTitle>{t("contact.info.title")}</CardTitle>
+        <CardDescription>{t("contact.info.description")}</CardDescription>
+    </CardHeader>
+    <CardContent class="space-y-4">
+        <div>
+            <h4 class="font-semibold mb-1">
+                {t("contact.info.address")}
+            </h4>
+            <p>{COMPANY.address}</p>
+            {COMPANY.pobox && <p>{COMPANY.pobox}</p>}
+            <p>{COMPANY.city}</p>
+        </div>
+        <div>
+            <h4 class="font-semibold mb-1">
+                {t("contact.info.phone")}
+            </h4>
+            <a
+                href={`tel:${COMPANY.phone}`}
+                class="text-primary hover:underline"
+            >
+                {COMPANY.phone}
+            </a>
+        </div>
+        <div>
+            <h4 class="font-semibold mb-1">
+                {t("contact.info.email")}
+            </h4>
+            <a
+                href={`mailto:${COMPANY.email}`}
+                class="text-primary hover:underline"
+            >
+                {COMPANY.email}
+            </a>
+        </div>
+        {
+            activeSocials.length > 0 && (
+                <div>
+                    <h4 class="font-semibold mb-2">
+                        {t("contact.info.socials")}
+                    </h4>
+                    <div class="flex gap-3 flex-wrap">
+                        {activeSocials.map((social) => (
+                            <a
+                                href={social.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="social-icon-link"
+                                aria-label={social.label}
+                                title={social.label}
+                            >
+                                <social.icon class="social-icon" />
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            )
+        }
+        <div>
+            <Button
+                href={COMPANY.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="outline"
+                class="w-full"
+            >
+                {t("contact.info.maps")}
+            </Button>
+        </div>
+    </CardContent>
+</Card>
+
+<style>
+    .social-icon-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.5rem;
+        background-color: hsl(var(--muted));
+        color: hsl(var(--muted-foreground));
+        transition: all 0.2s ease-in-out;
+    }
+
+    .social-icon-link:hover {
+        background-color: hsl(var(--primary));
+        color: hsl(var(--primary-foreground));
+        transform: translateY(-2px);
+    }
+
+    .social-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+</style>

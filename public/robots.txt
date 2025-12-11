@@ -1,0 +1,13 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Crawl-delay for polite crawling (in seconds)
+Crawl-delay: 1
+
+# IMPORTANT: Update with your actual domain!
+Host: https://example.com
+
+# Note: Automatic sitemap generation is available in the premium version
+# Visit https://astroswiss.com for more information
+

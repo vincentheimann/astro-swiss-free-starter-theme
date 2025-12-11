@@ -1,0 +1,82 @@
+---
+import { Image } from "astro:assets";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/starwind/card";
+import { Button } from "@/components/starwind/button";
+import { Separator } from "@/components/starwind/separator";
+import PortfolioSection from "./PortfolioSection.astro";
+import ServicesSection from "./ServicesSection.astro";
+import EmployeeSection from "./EmployeeSection.astro";
+import ContactSection from "./ContactSection.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { COMPANY } from "../consts";
+import logo from "../assets/logo.svg";
+
+// Get current language and translation function
+const lang = getLangFromUrl(Astro.url, Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<main class="min-h-screen">
+  <!-- Hero Section -->
+  <section class="container mx-auto px-4 py-8 md:py-12 lg:py-16">
+    <Card class="text-center">
+      <CardHeader>
+        <CardTitle class="text-2xl sm:text-3xl md:text-4xl font-bold">
+          <Image
+            src={logo}
+            alt={COMPANY.name}
+            class="mx-auto mb-4"
+            width={100}
+            height={100}
+            class="mx-auto mb-4 md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px]"
+            loading="eager"
+          />
+          {COMPANY.name}
+        </CardTitle>
+        <CardDescription class="text-base sm:text-lg md:text-xl mt-2">
+          {t("business.tagline")}
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p class="max-w-2xl mx-auto">
+          {t("business.description")}
+        </p>
+      </CardContent>
+      <CardFooter class="flex flex-col sm:flex-row justify-center gap-4">
+        <Button href="#contact" variant="default" size="lg">
+          {t("cta.quote")}
+        </Button>
+        <Button href="#services" variant="outline" size="lg">
+          {t("nav.services")}
+        </Button>
+      </CardFooter>
+    </Card>
+  </section>
+
+  <Separator class="my-8" />
+
+  <!-- Portfolio Section -->
+  <PortfolioSection />
+
+  <Separator class="my-8" />
+
+  <!-- Services Section -->
+  <ServicesSection />
+
+  <Separator class="my-8" />
+
+  <!-- Team Section -->
+  <EmployeeSection />
+
+  <Separator class="my-8" />
+
+  <!-- Contact Form Section -->
+  <ContactSection />
+</main>

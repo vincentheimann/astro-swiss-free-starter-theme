@@ -1,0 +1,180 @@
+---
+import { Image } from "astro:assets";
+import ContactLink from "./ContactLink.astro";
+import LanguageSelector from "./LanguageSelector.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+import { Button } from "@/components/starwind/button";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { COMPANY } from "../consts";
+import logo from "../assets/logo.svg";
+
+const lang = getLangFromUrl(Astro.url, Astro.currentLocale);
+const t = useTranslations(lang);
+
+const navItems = [
+  { label: t("nav.home"), href: "#home" },
+  { label: t("nav.work"), href: "#portfolio" },
+  { label: t("nav.services"), href: "#services" },
+  { label: t("nav.about"), href: "#about" },
+  { label: t("nav.contact"), href: "#contact" },
+];
+---
+
+<!-- Top Header Bar with Contact Info -->
+<div class="bg-muted/50 border-b border-border">
+  <div class="container mx-auto px-4">
+    <div
+      class="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-2 sm:gap-6 text-sm"
+    >
+      <ContactLink
+        type="phone"
+        value={COMPANY.phone}
+        label={COMPANY.name}
+        size="lg"
+      />
+      <ContactLink
+        type="email"
+        value={COMPANY.email}
+        label={COMPANY.name}
+        size="sm"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- Main Header -->
+<header class="sticky top-0 z-50 bg-background shadow-md transition-colors">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between py-4">
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <a
+          class="no-underline hover:opacity-90 flex items-center gap-2"
+          href="/"
+          aria-label="Home"
+        >
+          <Image
+            src={logo}
+            alt={COMPANY.name}
+            width={32}
+            height={32}
+            class="md:w-[45px] md:h-[45px]"
+            loading="eager"
+          />
+        </a>
+        <a
+          href="/"
+          class="hidden md:block text-base sm:text-lg md:text-xl lg:text-2xl font-bold hover:text-primary transition-colors leading-tight"
+        >
+          {COMPANY.name}
+        </a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <Button
+          href="#contact"
+          variant="default"
+          size="lg"
+          class="hidden sm:inline-flex"
+        >
+          {t("cta.quote")}
+        </Button>
+        <div class="md:flex items-center gap-4">
+          <LanguageSelector />
+        </div>
+        <div class="md:flex items-center gap-4">
+          <ThemeToggle />
+        </div>
+
+        <button
+          id="mobile-menu-toggle"
+          class="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <nav
+      id="mobile-menu"
+      class="md:hidden hidden pb-4"
+      aria-label="Mobile navigation"
+    >
+      <div class="flex flex-col gap-2">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="px-4 py-3 hover:bg-muted hover:text-primary rounded-lg font-medium transition-colors"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+        <div class="px-4 pt-2">
+          <Button href="#contact" variant="default" class="w-full sm:hidden">
+            {t("cta.quote")}
+          </Button>
+        </div>
+
+        <!-- Contact Section at Bottom -->
+        <div
+          class="px-4 pt-4 mt-2 border-t border-gray-200 dark:border-gray-700"
+        >
+          <h3
+            class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3"
+          >
+            Contact
+          </h3>
+          <div class="flex flex-col gap-2">
+            <ContactLink
+              type="phone"
+              value={COMPANY.phone}
+              label={COMPANY.name}
+              size="lg"
+            />
+            <ContactLink
+              type="email"
+              value={COMPANY.email}
+              label={COMPANY.name}
+              size="lg"
+            />
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggleButton = document.getElementById("mobile-menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (toggleButton && mobileMenu) {
+    toggleButton.addEventListener("click", () => {
+      const isExpanded = toggleButton.getAttribute("aria-expanded") === "true";
+      toggleButton.setAttribute("aria-expanded", (!isExpanded).toString());
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    const mobileLinks = mobileMenu.querySelectorAll("a");
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        toggleButton.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+</script>

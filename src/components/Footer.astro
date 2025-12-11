@@ -1,0 +1,50 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url, Astro.currentLocale);
+const t = useTranslations(lang);
+const currentYear = new Date().getFullYear();
+---
+
+<footer
+    class="bg-background border-t border-gray-200 dark:border-gray-700 py-6 mt-auto"
+>
+    <div class="container mx-auto px-4">
+        <div class="text-center">
+            <p class="text-sm text-muted-foreground mb-3">
+                © {currentYear}
+                {t("business.name")} - All rights reserved
+            </p>
+            <p class="text-xs text-muted-foreground/70 mb-3">
+                Built with <a
+                    href="https://astroswiss.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-primary transition-colors underline decoration-dotted"
+                    >Astro Swiss Starter Theme</a
+                >
+                — <a
+                    href="https://demo.astroswiss.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-primary transition-colors">View Demo</a
+                >
+            </p>
+            <div class="flex justify-center">
+                <a
+                    href="https://heimvin.me"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Created by heimvin"
+                    class="inline-block hover:opacity-80 transition-opacity"
+                >
+                    <img
+                        src="/fingerprint_heimvin.svg"
+                        alt="Created by heimvin"
+                        class="h-8 w-auto"
+                    />
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>

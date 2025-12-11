@@ -1,0 +1,68 @@
+---
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownContent,
+  DropdownItem,
+} from "@/components/starwind/dropdown";
+import { languages } from "@/i18n/ui";
+
+// Get current locale (will be 'fr' or 'de')
+const currentLocale = Astro.currentLocale || "fr";
+const currentLang = languages[currentLocale as keyof typeof languages];
+
+// Get the current path without locale prefix
+const pathname = Astro.url.pathname;
+const pathWithoutLocale = pathname.replace(/^\/(fr|de)/, "") || "/";
+
+// Generate URLs for each language
+const languageUrls = {
+  fr: pathWithoutLocale === "/" ? "/" : `/fr${pathWithoutLocale}`,
+  de: `/de${pathWithoutLocale}`,
+};
+---
+
+<Dropdown>
+  <DropdownTrigger asChild>
+    <button
+      class="flex items-center gap-2 px-4 py-2 rounded-lg border hover:bg-muted transition-colors language-selector-btn"
+      aria-label="Select language"
+    >
+      <span class="text-xl">{currentLang.flag}</span>
+      <span class="font-medium">{currentLang.name}</span>
+      <svg
+        class="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </button>
+  </DropdownTrigger>
+
+  <DropdownContent
+    align="center"
+    class="max-h-[80vh] overflow-y-auto md:!bottom-auto md:!top-full"
+  >
+    {
+      Object.entries(languages).map(([code, lang]) => (
+        <DropdownItem
+          as="a"
+          href={languageUrls[code as keyof typeof languageUrls]}
+          class={currentLocale === code ? "bg-muted font-semibold" : ""}
+        >
+          <span class="text-xl mr-2">{lang.flag}</span>
+          <span>{lang.name}</span>
+          {currentLocale === code && (
+            <span class="ml-auto text-primary">✓</span>
+          )}
+        </DropdownItem>
+      ))
+    }
+  </DropdownContent>
+</Dropdown>

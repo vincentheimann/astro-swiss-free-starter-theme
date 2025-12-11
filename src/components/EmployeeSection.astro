@@ -1,0 +1,201 @@
+---
+import { Card, CardContent } from "@/components/starwind/card";
+import { Image } from "astro:assets";
+import {
+    Avatar,
+    AvatarImage,
+    AvatarFallback,
+} from "@/components/starwind/avatar";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { EMPLOYEES } from "../consts";
+
+// Import social media icons
+import LinkedinIcon from "@tabler/icons/outline/brand-linkedin.svg";
+import FacebookIcon from "@tabler/icons/outline/brand-facebook.svg";
+import InstagramIcon from "@tabler/icons/outline/brand-instagram.svg";
+import TwitterIcon from "@tabler/icons/outline/brand-x.svg";
+import GithubIcon from "@tabler/icons/outline/brand-github.svg";
+import EmailIcon from "@tabler/icons/outline/mail.svg";
+import PhoneIcon from "@tabler/icons/outline/phone.svg";
+
+// Get current language and translation function
+const lang = getLangFromUrl(Astro.url, Astro.currentLocale);
+const t = useTranslations(lang);
+
+// Get all employees as array
+const employees = Object.values(EMPLOYEES);
+
+// Helper function to get employee initials
+const getInitials = (name: string) => {
+    return name
+        .split(" ")
+        .map((n) => n[0])
+        .join("");
+};
+
+// Helper function to get active socials for an employee
+const getActiveSocials = (
+    employee: (typeof EMPLOYEES)[keyof typeof EMPLOYEES],
+) => {
+    const socialMediaConfig = [
+        {
+            key: "linkedin",
+            url: employee.socials.linkedin,
+            icon: LinkedinIcon,
+            label: t("contact.info.socials.linkedin"),
+        },
+        {
+            key: "facebook",
+            url: employee.socials.facebook,
+            icon: FacebookIcon,
+            label: t("contact.info.socials.facebook"),
+        },
+        {
+            key: "instagram",
+            url: employee.socials.instagram,
+            icon: InstagramIcon,
+            label: t("contact.info.socials.instagram"),
+        },
+        {
+            key: "twitter",
+            url: employee.socials.twitter,
+            icon: TwitterIcon,
+            label: t("contact.info.socials.twitter"),
+        },
+        {
+            key: "github",
+            url: employee.socials.github,
+            icon: GithubIcon,
+            label: t("contact.info.socials.github"),
+        },
+        {
+            key: "email",
+            url: "mailto:" + employee.email,
+            icon: EmailIcon,
+            label: t("contact.info.email"),
+        },
+        {
+            key: "phone",
+            url: "tel:" + employee.phone,
+            icon: PhoneIcon,
+            label: t("contact.info.phone"),
+        },
+    ];
+
+    return socialMediaConfig.filter(
+        (social) =>
+            social.url &&
+            social.url.trim() !== "" &&
+            !social.url.includes("undefined"),
+    );
+};
+---
+
+<section id="about" class="container mx-auto px-4 py-16">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-2">
+            {t("team.title")}
+        </h2>
+        <p class="text-muted-foreground">
+            {t("team.subtitle")}
+        </p>
+    </div>
+
+    <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center"
+    >
+        {
+            employees.map((employee) => {
+                const initials = getInitials(employee.name);
+                const activeSocials = getActiveSocials(employee);
+
+                return (
+                    <Card class="w-full">
+                        <CardContent class="pt-6">
+                            <div class="flex flex-col items-center text-center">
+                                {/* Portrait or Avatar */}
+                                {employee.portrait ? (
+                                    <Image
+                                        src={employee.portrait}
+                                        alt={employee.name}
+                                        width={120}
+                                        height={120}
+                                        class="rounded-full mb-4 object-cover"
+                                    />
+                                ) : (
+                                    <Avatar
+                                        variant="primary"
+                                        size="lg"
+                                        class="mb-4"
+                                    >
+                                        <AvatarImage
+                                            src={`https://api.dicebear.com/9.x/miniavs/svg?seed=${employee.name}`}
+                                            alt={employee.name}
+                                        />
+                                        <AvatarFallback>
+                                            {initials}
+                                        </AvatarFallback>
+                                    </Avatar>
+                                )}
+
+                                {/* Employee Info */}
+                                <h3 class="text-xl font-bold mb-1">
+                                    {employee.name}
+                                </h3>
+                                <p class="text-primary font-medium mb-3">
+                                    {t(`employee.${employee.id}.title` as any)}
+                                </p>
+                                <p class="text-sm text-muted-foreground mb-4">
+                                    {t(`employee.${employee.id}.bio` as any)}
+                                </p>
+
+                                {/* Social Icons */}
+                                {activeSocials.length > 0 && (
+                                    <div class="flex gap-2 flex-wrap justify-center">
+                                        {activeSocials.map((social) => (
+                                            <a
+                                                href={social.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="social-icon-link"
+                                                aria-label={social.label}
+                                                title={social.label}
+                                            >
+                                                <social.icon class="social-icon" />
+                                            </a>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </CardContent>
+                    </Card>
+                );
+            })
+        }
+    </div>
+</section>
+
+<style>
+    .social-icon-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 0.375rem;
+        background-color: hsl(var(--muted));
+        color: hsl(var(--muted-foreground));
+        transition: all 0.2s ease-in-out;
+    }
+
+    .social-icon-link:hover {
+        background-color: hsl(var(--primary));
+        color: hsl(var(--primary-foreground));
+        transform: translateY(-2px);
+    }
+
+    .social-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+</style>
