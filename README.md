@@ -1,196 +1,104 @@
-# Astro Swiss Starter Theme (Free)
+# Astro Swiss Starter Theme
 
-![Astro Swiss Starter Theme](docs/assets/dark-mode-toggle.webp)
+**A professional, multilingual foundation for proper Astro projects.**
 
-**A free, production-ready multilingual starter theme for Astro with Starwind UI, Tailwind CSS v4, and dark mode support.**
+[![Version](https://img.shields.io/badge/version-1.0.0--free-blue.svg)](CHANGELOG.md) [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-Perfect for agencies, portfolios, and professional services. Built with modern web standards and best practices.
-
-[![Version](https://img.shields.io/badge/version-1.0.0--free-blue.svg)](CHANGELOG.md)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Astro](https://img.shields.io/badge/Astro-5.16-orange.svg)](https://astro.build)
-[![Tailwind](https://img.shields.io/badge/Tailwind-4.1-blue.svg)](https://tailwindcss.com)
-
-**[🌐 View Live Demo](https://demo.astroswiss.com)** | **[📖 Documentation](docs/)** | **[💼 Premium Version](https://astroswiss.com)**
-
-> [!NOTE]
-> This is the **free version** of Astro Swiss Starter Theme. Looking for premium features like advanced analytics, sitemap generation, and priority support? Check out the [premium version on astroswiss.com](https://astroswiss.com).
+[**🌐 Live Demo**](https://demo.astroswiss.com) | [**📖 Documentation**](https://docs.astroswiss.com) | [**💼 Premium Version**](https://astroswiss.com)
 
 ---
+
+> [!NOTE]
+> **Production Ready**: This free version is a complete, standalone product with **Astro 5**, **Tailwind 4**, and **i18n** built-in. It is not a "lite" version with broken features.
+>
+> *Looking for advanced analytics, sitemap generation, and priority support?* [See the Premium Version](https://astroswiss.com).
 
 ## 🚀 Quick Start
 
+Get your site running in less than 2 minutes.
+
 ```bash
-# Install
+# 1. Clone the repository
 git clone https://github.com/vincentheimann/astro-swiss-free-starter-theme.git
-cd astro-swiss-starter-theme
+cd astro-swiss-free-starter-theme
+
+# 2. Install dependencies
 npm install
 
-# Run
+# 3. Start development server
 npm run dev
 ```
 
-Visit [http://localhost:4321](http://localhost:4321) - your site is running!
-
-**What's next?** → [Getting Started Guide](docs/GETTING_STARTED.md) (10 minutes to customize)
+Visit **[http://localhost:4321](http://localhost:4321)** to see your new site.
 
 ---
 
-## ✨ Key Features
+## ✨ Features
 
-![Language switching and dark mode](docs/assets/language-selector.webp)
-*Seamless language switching between French and German*
+Built to modern web standards, focusing on performance and developer experience.
 
-### Core Features
-- 🌍 **Multilingual (i18n)** - French & German out of the box, easily add more languages
-- 🌓 **Dark Mode** - Automatic detection with manual toggle, preference persistence
-- 🎨 **Starwind UI Components** - Beautiful, accessible, production-ready components
-- 📱 **Fully Responsive** - Mobile-first design that works on all devices
-- ⚡ **Performance Optimized** - Lighthouse scores 95+ across the board
-- 🎯 **SEO Ready** - Semantic HTML and meta tags
-- 🔒 **Type-Safe** - Full TypeScript support for better development experience
-
-### Content Sections
-- 🖼️ **Portfolio/Gallery** - Showcase projects with lightbox and carousel
-- 👥 **Team Section** - Display team members with bios and social links
-- 💼 **Services Section** - Highlight your services with icons and descriptions
-- 📧 **Contact Form** - Ready-to-integrate contact section
-- 🏢 **Business Info Card** - Display company details with map integration
-
-### Developer Experience
-- 🛠️ **Easy Customization** - Well-documented, clean code structure
-- 🎨 **Design Tokens** - Centralized styling with CSS custom properties
-- 📦 **Modern Stack** - Astro 5, Tailwind CSS v4, TypeScript
-- 🔄 **Hot Module Replacement** - Instant updates during development
-- 📚 **Comprehensive Docs** - 8 detailed guides covering everything
+- **🌍 True Multilingual (i18n)**: Native Astro i18n routing with French & German pre-configured. Scalable architecture for adding more languages.
+- **🎨 Starwind UI System**: A collection of beautiful, accessible components built on **Tailwind CSS v4**.
+- **⚡ Exceptional Performance**: Lighthouse 95+ Performance Score. Zero Javascript by default.
+- **🌓 Dark Mode**: Robust implementation with user preference persistence (localStorage) and system preference detection.
+- **🛡️ Type-Safe**: Written in TypeScript for a confident development experience.
 
 ---
 
-## 📖 Your Next Steps
+## 📚 Documentation
 
-**New to this theme?** Start here → [Getting Started Guide](docs/GETTING_STARTED.md)
+Detailed guides to help you customize and deploy.
 
-**Ready to customize?** Choose your path:
+### 🏁 User Guides
+- [**Getting Started**](https://docs.astroswiss.com/getting-started/): The 5-minute setup guide.
+- [**Data & Content**](https://docs.astroswiss.com/guides/data-management/): How to manage your team, portfolio, and services data.
+- [**Styling**](https://docs.astroswiss.com/guides/styling/): Customizing the design system and branding.
+- [**Deployment**](https://docs.astroswiss.com/deployment/): Production checklist and deployment guides.
 
-| I want to... | Go here |
-|--------------|---------|
-| Add my team & projects | [Data Management](docs/DATA_MANAGEMENT.md) |
-| Change colors & design | [Styling Guide](docs/STYLING.md) |
-| Add more languages | [Adding Languages](docs/ADDING_LANGUAGES.md) |
-| Deploy my site | [Deployment Guide](docs/DEPLOYMENT.md) |
-
----
-
-## 📚 Full Documentation
-
-### Getting Started
-- **[Getting Started Guide](docs/GETTING_STARTED.md)** - Your first 10 minutes
-
-### Customization
-- **[Data Management](docs/DATA_MANAGEMENT.md)** - Add employees & portfolio projects
-- **[Styling Guide](docs/STYLING.md)** - Colors, themes, fonts
-- **[Customization Guide](docs/CUSTOMIZATION.md)** - Components & layouts
-
-### Advanced
-- **[Configuration](docs/CONFIGURATION.md)** - Deep configuration options
-- **[Adding Languages](docs/ADDING_LANGUAGES.md)** - i18n setup
-- **[Deployment](docs/DEPLOYMENT.md)** - Deploy to production
-- **[Browser Support](docs/BROWSER_SUPPORT.md)** - Browser compatibility
-
-### Support
-- **[Support & Help](docs/SUPPORT.md)** - Get help and support
-- **[Contributing Guide](docs/CONTRIBUTING.md)** - Development guidelines
+### 🛠️ Developer Resources
+- [**Adding Languages**](https://docs.astroswiss.com/guides/adding-languages/): Expanding to 3+ languages.
+- [**Configuration**](https://docs.astroswiss.com/guides/configuration/): Advanced configuration options.
 
 ---
 
 <details>
-<summary><strong>📁 Project Structure</strong></summary>
+<summary><strong>📂 Project Structure</strong></summary>
 
-```
+We use a standard, intuitive Astro structure:
+
+```text
 astro-swiss-starter-theme/
-├── docs/                      # Documentation
-├── public/                    # Static assets
 ├── src/
-│   ├── assets/               # Images & media
-│   ├── components/           # Astro & Starwind components
-│   ├── data/                 # Content data (portfolio, etc.)
-│   ├── i18n/                 # Translations
-│   ├── layouts/              # Page layouts
-│   ├── pages/                # Routes
-│   ├── styles/               # CSS (tokens, themes)
-│   ├── consts.ts            # Company info, employees
-│   └── middleware.ts         # Language detection
-├── astro.config.mjs          # Astro config
-└── starwind.config.json      # Starwind config
+│   ├── components/    # Starwind UI components (Cards, Heroes, etc.)
+│   ├── data/          # Type-safe content (Team, Services, Portfolio)
+│   ├── i18n/          # Translation dictionaries
+│   ├── layouts/       # Main layouts (Head, Metadata)
+│   └── pages/         # File-based routing
+├── public/            # Static assets
+└── astro.config.mjs   # Astro configuration
 ```
 
 </details>
 
 <details>
-<summary><strong>🧞 Commands</strong></summary>
+<summary><strong>📦 Tech Stack</strong></summary>
 
-| Command | Action |
-|---------|--------|
-| `npm install` | Install dependencies |
-| `npm run dev` | Start dev server at `localhost:4321` |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-
-</details>
-
-<details>
-<summary><strong>🛠️ Tech Stack</strong></summary>
-
-- [Astro](https://astro.build) - Framework
-- [Starwind](https://starwind.dev) - UI components
-- [Tailwind CSS v4](https://tailwindcss.com) - Styling
-- [Embla Carousel](https://www.embla-carousel.com/) - Carousel
-- [Tabler Icons](https://tabler.io/icons) - Icons
+- **Astro 5.0**
+- **Tailwind CSS 4.0**
+- **Starwind UI**
+- **TypeScript**
+- **Embla Carousel**
+- **Tabler Icons**
 
 </details>
 
 ---
 
-## 🌐 Browser Support
+## 🤝 Support
 
-Works on all modern browsers:
-- ✅ Chrome 90+
-- ✅ Firefox 88+
-- ✅ Safari 14+
-- ✅ Edge 90+
-- ✅ Mobile browsers (iOS Safari, Chrome Android)
+We are committed to maintaining a high-quality open source foundation.
 
-See [Browser Support Guide](docs/BROWSER_SUPPORT.md) for details.
-
----
-
-## 📄 License
-
-MIT License - See [LICENSE](LICENSE) for details.
-
-This theme is free to use for both personal and commercial projects.
-
----
-
-## 💬 Support
-
-- **Documentation**: [Full documentation](docs/)
-- **Support**: [Get help](docs/SUPPORT.md)
+- **Documentation**: [docs.astroswiss.com](https://docs.astroswiss.com)
 - **Issues**: [GitHub Issues](https://github.com/vincentheimann/astro-swiss-free-starter-theme/issues)
-- **Email**: hello@astroswiss.com
+- **Direct Support**: [Premium Support](mailto:hello@astroswiss.com).
 
----
-
-## 🎯 Perfect For
-
-- 🏢 Digital Marketing Agencies
-- 💼 Professional Services (Consulting, Legal, Architecture)
-- 🎨 Creative Portfolios
-- 🛠️ Artisan & Craft Businesses
-- 🌍 Any multilingual business website
-
----
-
-**Made with ❤️ by [Vincent Heimann](https://astroswiss.com)**
-
-If you find this theme useful, please consider leaving a review! ⭐
