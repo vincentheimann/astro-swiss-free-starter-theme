@@ -6,15 +6,17 @@
 import type { Language } from "../../i18n/ui";
 import { portfolioFr, type PortfolioProject } from "./fr";
 import { portfolioDe } from "./de";
+import { portfolioEn } from "./en";
 
 const portfolioData = {
     fr: portfolioFr,
     de: portfolioDe,
+    en: portfolioEn,
 } as const;
 
 /**
  * Get portfolio projects for a specific language
- * @param lang - The language code (fr, de)
+ * @param lang - The language code (fr, de, en)
  * @returns Array of portfolio projects in the specified language
  */
 export function getPortfolio(lang: Language): PortfolioProject[] {

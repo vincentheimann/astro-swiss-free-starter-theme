@@ -5,21 +5,25 @@ import {
   DropdownContent,
   DropdownItem,
 } from "@/components/starwind/dropdown";
-import { languages } from "@/i18n/ui";
+import { defaultLang, languages } from "@/i18n/ui";
 
-// Get current locale (will be 'fr' or 'de')
-const currentLocale = Astro.currentLocale || "fr";
+const currentLocale = Astro.currentLocale || defaultLang;
 const currentLang = languages[currentLocale as keyof typeof languages];
 
-// Get the current path without locale prefix
+// Get the current path without locale prefix (locales derived from the languages object)
+const localePattern = new RegExp(`^/(${Object.keys(languages).join("|")})`);
 const pathname = Astro.url.pathname;
-const pathWithoutLocale = pathname.replace(/^\/(fr|de)/, "") || "/";
+const pathWithoutLocale = pathname.replace(localePattern, "") || "/";
 
-// Generate URLs for each language
-const languageUrls = {
-  fr: pathWithoutLocale === "/" ? "/" : `/fr${pathWithoutLocale}`,
-  de: `/de${pathWithoutLocale}`,
-};
+// Generate URLs for each language (default locale is unprefixed)
+const languageUrls = Object.fromEntries(
+  Object.keys(languages).map((code) => [
+    code,
+    code === defaultLang
+      ? pathWithoutLocale
+      : `/${code}${pathWithoutLocale}`,
+  ])
+) as Record<keyof typeof languages, string>;
 ---
 
 <Dropdown>
