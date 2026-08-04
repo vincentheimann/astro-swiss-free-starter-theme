@@ -9,7 +9,7 @@
 ---
 
 > [!NOTE]
-> **Production Ready**: This free version is a complete, standalone product with **Astro 5**, **Tailwind 4**, and **i18n** built-in. It is not a "lite" version with broken features.
+> **Production Ready**: This free version is a complete, standalone product with **Astro 7**, **Tailwind 4**, and **i18n** built-in. It is not a "lite" version with broken features.
 >
 > *Looking for advanced analytics, sitemap generation, and priority support?* [See the Premium Version](https://astroswiss.com).
 
@@ -37,7 +37,7 @@ Visit **[http://localhost:4321](http://localhost:4321)** to see your new site.
 
 Built to modern web standards, focusing on performance and developer experience.
 
-- **🌍 True Multilingual (i18n)**: Native Astro i18n routing with French & German pre-configured. Scalable architecture for adding more languages.
+- **🌍 True Multilingual (i18n)**: Native Astro i18n routing with French, German & English pre-configured. Scalable architecture for adding more languages.
 - **🎨 Starwind UI System**: A collection of beautiful, accessible components built on **Tailwind CSS v4**.
 - **⚡ Exceptional Performance**: Lighthouse 95+ Performance Score. Zero Javascript by default.
 - **🌓 Dark Mode**: Robust implementation with user preference persistence (localStorage) and system preference detection.
@@ -83,8 +83,8 @@ astro-swiss-starter-theme/
 <details>
 <summary><strong>📦 Tech Stack</strong></summary>
 
-- **Astro 5.0**
-- **Tailwind CSS 4.0**
+- **Astro 7**
+- **Tailwind CSS 4**
 - **Starwind UI**
 - **TypeScript**
 - **Embla Carousel**
