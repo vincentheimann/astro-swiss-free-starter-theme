@@ -3,6 +3,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Landing from "../components/Landing.astro";
 import Footer from "../components/Footer.astro";
+import { defaultLang, languages } from "../i18n/ui";
+
+const locales = Object.keys(languages);
 ---
 
 <BaseLayout>
@@ -10,3 +13,21 @@ import Footer from "../components/Footer.astro";
   <Landing />
   <Footer />
 </BaseLayout>
+
+<script is:inline define:vars={{ locales, defaultLang }}>
+  // First-visit locale detection. The build is static, so Accept-Language
+  // can't be read server-side; this runs only on the default-locale homepage
+  // and never overrides a choice stored by the language selector.
+  (function () {
+    try {
+      var stored = localStorage.getItem("lang");
+      var lang =
+        stored || (navigator.language || "").split("-")[0].toLowerCase();
+      if (lang && lang !== defaultLang && locales.indexOf(lang) !== -1) {
+        location.replace("/" + lang + "/");
+      }
+    } catch (e) {
+      // storage blocked — stay on the default locale
+    }
+  })();
+</script>

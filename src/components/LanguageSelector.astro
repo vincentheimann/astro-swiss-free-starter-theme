@@ -58,6 +58,7 @@ const languageUrls = Object.fromEntries(
         <DropdownItem
           as="a"
           href={languageUrls[code as keyof typeof languageUrls]}
+          data-lang-choice={code}
           class={currentLocale === code ? "bg-muted font-semibold" : ""}
         >
           <span class="text-sm font-semibold mr-2">{lang.flag}</span>
@@ -70,3 +71,22 @@ const languageUrls = Object.fromEntries(
     }
   </DropdownContent>
 </Dropdown>
+
+<script is:inline>
+  // Remember an explicit language choice so the homepage detection never
+  // bounces a visitor who picked a language themselves.
+  if (!window.__langChoiceBound) {
+    window.__langChoiceBound = true;
+    document.addEventListener("click", function (e) {
+      var link =
+        e.target && e.target.closest && e.target.closest("[data-lang-choice]");
+      if (link) {
+        try {
+          localStorage.setItem("lang", link.getAttribute("data-lang-choice"));
+        } catch (err) {
+          // storage blocked — choice simply isn't remembered
+        }
+      }
+    });
+  }
+</script>

@@ -8,7 +8,5 @@
   status = 301
   force = true
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# No SPA catch-all: this is a static multi-page site. Missing URLs must return
+# a real 404 (Netlify serves dist/404.html automatically), not the homepage.

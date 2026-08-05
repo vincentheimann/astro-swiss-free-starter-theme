@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { defaultLang, languages } from "../i18n/ui";
+
+// One static 404 page serves every locale (Netlify and most hosts serve
+// dist/404.html for any missing URL), so the three messages are inlined here
+// and the matching one is revealed from the requested path's locale prefix.
+const locales = Object.keys(languages);
+---
+
+<BaseLayout title="404">
+  <Header />
+  <main class="flex min-h-[60vh] items-center justify-center px-4">
+    <div class="text-center">
+      <p class="mb-4 text-6xl font-bold">404</p>
+      <p data-404-msg="fr" class="text-lg">
+        Page introuvable. <a class="underline" href="/">Retour à l'accueil</a>
+      </p>
+      <p data-404-msg="de" class="text-lg" hidden>
+        Seite nicht gefunden. <a class="underline" href="/de/">Zur Startseite</a>
+      </p>
+      <p data-404-msg="en" class="text-lg" hidden>
+        Page not found. <a class="underline" href="/en/">Back to home</a>
+      </p>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script is:inline define:vars={{ locales, defaultLang }}>
+  // Show the message matching the locale of the URL the visitor tried.
+  (function () {
+    var m = location.pathname.match(
+      new RegExp("^/(" + locales.join("|") + ")(/|$)")
+    );
+    var lang = m ? m[1] : defaultLang;
+    document.querySelectorAll("[data-404-msg]").forEach(function (el) {
+      el.hidden = el.getAttribute("data-404-msg") !== lang;
+    });
+  })();
+</script>
