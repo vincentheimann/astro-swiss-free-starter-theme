@@ -1,8 +1,8 @@
 // src/i18n/ui.ts
 export const languages = {
-  fr: { name: 'Français', flag: '🇫🇷' },
-  de: { name: 'Deutsch', flag: '🇩🇪' },
-  en: { name: 'English', flag: '🇬🇧' },
+  fr: { name: 'Français', flag: 'FR' },
+  de: { name: 'Deutsch', flag: 'DE' },
+  en: { name: 'English', flag: 'EN' },
 } as const;
 
 export type Language = keyof typeof languages;
@@ -82,7 +82,7 @@ export const ui = {
     'nav.home': 'Startseite',
     'nav.work': 'Unsere Arbeiten',
     'nav.services': 'Unsere Dienstleistungen',
-    'nav.about': 'Unsere Team',
+    'nav.about': 'Unser Team',
     'nav.contact': 'Kontakt',
     'cta.quote': 'Projekt Starten',
     'business.tagline': 'Ihr digitaler Partner für nachhaltiges Wachstum',

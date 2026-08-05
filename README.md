@@ -11,7 +11,7 @@
 > [!NOTE]
 > **Production Ready**: This free version is a complete, standalone product with **Astro 7**, **Tailwind 4**, and **i18n** built-in. It is not a "lite" version with broken features.
 >
-> *Looking for advanced analytics, sitemap generation, and priority support?* [See the Premium Version](https://astroswiss.com).
+> *Looking for premium components, an embedded setup wizard, and priority support?* [See the Premium Version](https://astroswiss.com).
 
 ## 🚀 Quick Start
 
@@ -39,7 +39,7 @@ Built to modern web standards, focusing on performance and developer experience.
 
 - **🌍 True Multilingual (i18n)**: Native Astro i18n routing with French, German & English pre-configured. Scalable architecture for adding more languages.
 - **🎨 Starwind UI System**: A collection of beautiful, accessible components built on **Tailwind CSS v4**.
-- **⚡ Exceptional Performance**: Lighthouse 95+ Performance Score. Zero Javascript by default.
+- **⚡ Exceptional Performance**: Fast, lightweight pages. Minimal JavaScript — only where interaction needs it.
 - **🌓 Dark Mode**: Robust implementation with user preference persistence (localStorage) and system preference detection.
 - **🛡️ Type-Safe**: Written in TypeScript for a confident development experience.
 
@@ -50,7 +50,7 @@ Built to modern web standards, focusing on performance and developer experience.
 Detailed guides to help you customize and deploy.
 
 ### 🏁 User Guides
-- [**Getting Started**](https://docs.astroswiss.com/getting-started/): The 5-minute setup guide.
+- [**Getting Started**](https://docs.astroswiss.com/getting-started/): The quick setup guide — running in less than 2 minutes.
 - [**Data & Content**](https://docs.astroswiss.com/guides/data-management/): How to manage your team, portfolio, and services data.
 - [**Styling**](https://docs.astroswiss.com/guides/styling/): Customizing the design system and branding.
 - [**Deployment**](https://docs.astroswiss.com/deployment/): Production checklist and deployment guides.

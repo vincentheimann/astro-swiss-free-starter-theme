@@ -2,6 +2,7 @@
 import type { ImageMetadata } from "astro";
 import "@/styles/global.css";
 import FallbackImage from "../assets/images/fallback-image.png";
+import { COMPANY } from "../consts";
 import { defaultLang, languages, type Language } from "../i18n/ui";
 import { useTranslations } from "../i18n/utils";
 
@@ -55,7 +56,7 @@ const alternateLanguages = Object.keys(languages) as Language[];
         <title>{pageTitle}</title>
         <meta name="title" content={pageTitle} />
         <meta name="description" content={pageDescription} />
-        <meta name="author" content={t("author.name")} />
+        <meta name="author" content={COMPANY.name} />
 
         <!-- Color Scheme and Theme -->
         <meta name="color-scheme" content="light dark" />
@@ -91,7 +92,7 @@ const alternateLanguages = Object.keys(languages) as Language[];
 
         <!-- Open Graph / Social Media -->
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content={t("business.name")} />
+        <meta property="og:site_name" content={COMPANY.name} />
         <meta property="og:locale" content={ogLocale} />
         {
             alternateLanguages
@@ -151,14 +152,14 @@ const alternateLanguages = Object.keys(languages) as Language[];
                         "@type": "WebSite",
                         "@id": `${siteOrigin}/#website`,
                         url: siteOrigin,
-                        name: t("business.name"),
+                        name: COMPANY.name,
                         description: t("business.description"),
                         inLanguage: lang,
                     },
                     {
                         "@type": "Organization",
                         "@id": `${siteOrigin}/#organization`,
-                        name: t("business.name"),
+                        name: COMPANY.name,
                         url: siteOrigin,
                         logo: {
                             "@type": "ImageObject",
@@ -166,8 +167,8 @@ const alternateLanguages = Object.keys(languages) as Language[];
                         },
                         contactPoint: {
                             "@type": "ContactPoint",
-                            telephone: t("author.phone"),
-                            email: t("author.email"),
+                            telephone: COMPANY.phone,
+                            email: COMPANY.email,
                             contactType: "customer service",
                             availableLanguage: alternateLanguages,
                         },

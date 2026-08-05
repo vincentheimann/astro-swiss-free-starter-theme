@@ -12,7 +12,7 @@ const lang = getLangFromUrl(Astro.url, Astro.currentLocale);
 const t = useTranslations(lang);
 
 const navItems = [
-  { label: t("nav.home"), href: "#home" },
+  { label: t("nav.home"), href: "/" },
   { label: t("nav.work"), href: "#portfolio" },
   { label: t("nav.services"), href: "#services" },
   { label: t("nav.about"), href: "#about" },
@@ -68,6 +68,22 @@ const navItems = [
           {COMPANY.name}
         </a>
       </div>
+
+      <nav
+        class="hidden md:flex items-center gap-1"
+        aria-label="Main navigation"
+      >
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="px-3 py-2 hover:bg-muted hover:text-primary rounded-lg font-medium transition-colors"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
 
       <div class="flex items-center gap-4">
         <Button
