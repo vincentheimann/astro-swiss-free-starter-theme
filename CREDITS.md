@@ -59,11 +59,6 @@ This theme uses the following open-source projects and resources. We are gratefu
 - **Description**: Tailwind CSS animations
 - **Version**: 1.4.0
 
-### nanoid
-- **License**: MIT
-- **Description**: A tiny, secure, URL-friendly unique string ID generator
-- **Version**: 5.1.6
-
 ### @tailwindcss/forms
 - **License**: MIT
 - **Description**: Form styles plugin for Tailwind CSS
@@ -83,10 +78,9 @@ This theme uses system font stacks for optimal performance:
 ## Demo Content
 
 ### Images
-All images used in the demo are either:
+All images used in the demo are:
 - Created specifically for this theme
-- Placeholder images for demonstration purposes
-- **License**: Free to use with theme purchase
+- **License**: Free to use with the theme
 
 ### Text Content
 All demo text content is original and created for demonstration purposes.
