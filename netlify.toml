@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
+# Astro 7 requires Node >= 22.12
+[build.environment]
+  NODE_VERSION = "22"
+
 [[redirects]]
   from = "https://demo.astroswiss.ch/*"
   to = "https://demo.astroswiss.com/:splat"
