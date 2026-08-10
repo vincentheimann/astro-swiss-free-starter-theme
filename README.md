@@ -11,7 +11,7 @@
 > [!NOTE]
 > **Production Ready**: This free version is a complete, standalone product with **Astro 7**, **Tailwind 4**, and **i18n** built-in. It is not a "lite" version with broken features.
 >
-> *Looking for premium components, an embedded setup wizard, and priority support?* [See the Premium Version](https://astroswiss.com).
+> *Looking for premium components, an embedded setup wizard, and a commercial license?* [See the Premium Version](https://astroswiss.com) — buy once at a low price, yours forever.
 
 ## 🚀 Quick Start
 

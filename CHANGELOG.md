@@ -73,4 +73,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-**Note**: This is the free version of Astro Swiss Starter Theme. For premium features like analytics integration, automatic sitemap generation, and priority support, check out the [premium version](https://astroswiss.com).
+**Note**: This is the free version of Astro Swiss Starter Theme. For premium features like analytics integration, automatic sitemap generation, and a commercial license, check out the [premium version](https://astroswiss.com).
