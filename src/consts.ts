@@ -65,7 +65,7 @@ export const EMPLOYEES: Record<string, EmployeeInfo> = {
     SMA: {
         id: "SMA",
         name: "Sophie Martin",
-        portrait: "", // Path to portrait image, leave empty if not available
+        portrait: "/images/team/sophie-martin.webp",
         email: "sophie.martin@swissdigital.example",
         phone: "+41 21 555 01 24",
         socials: {
@@ -79,7 +79,7 @@ export const EMPLOYEES: Record<string, EmployeeInfo> = {
     LDU: {
         id: "LDU",
         name: "Luc Dubois",
-        portrait: "", // Path to portrait image, leave empty if not available
+        portrait: "/images/team/luc-dubois.webp",
         email: "luc.dubois@swissdigital.example",
         phone: "+41 21 555 01 25",
         socials: {
@@ -93,7 +93,7 @@ export const EMPLOYEES: Record<string, EmployeeInfo> = {
     ABE: {
         id: "ABE",
         name: "Anna Berger",
-        portrait: "", // Path to portrait image, leave empty if not available
+        portrait: "/images/team/anna-berger.webp",
         email: "anna.berger@swissdigital.example",
         phone: "+41 21 555 01 26",
         socials: {
@@ -108,7 +108,7 @@ export const EMPLOYEES: Record<string, EmployeeInfo> = {
     // ABC: {
     //     id: "ABC",
     //     name: "Another Employee",
-    //     portrait: "/images/employees/employee.jpg",
+    //     portrait: "/images/team/employee.jpg", // leave "" if not available
     //     email: "employee@swissdigital.example",
     //     phone: "+41 21 555 01 27",
     //     socials: { ... },

@@ -78,9 +78,16 @@ This theme uses system font stacks for optimal performance:
 ## Demo Content
 
 ### Images
-All images used in the demo are:
-- Created specifically for this theme
+All demo imagery (portfolio mockups, team portraits, brand mark, favicon,
+social/OG image) is original vector artwork created specifically for this theme.
+- No stock photos, no third-party characters, no AI-photoreal faces
+- Fictional domains in mockups use the IANA-reserved `.example` TLD
 - **License**: Free to use with the theme
+
+If a team member's `portrait` field is left empty, the theme falls back to a
+generated avatar fetched at page view from [DiceBear](https://www.dicebear.com/)
+(third-party service). The demo ships with local portraits, so no external
+request is made out of the box.
 
 ### Text Content
 All demo text content is original and created for demonstration purposes.

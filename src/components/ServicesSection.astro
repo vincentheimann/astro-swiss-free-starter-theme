@@ -10,12 +10,12 @@ import { Button } from "@/components/starwind/button";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 // Import Tabler icons for services
-import ConsultationIcon from "@tabler/icons/outline/message-circle.svg";
+import StrategyIcon from "@tabler/icons/outline/message-circle.svg";
 import DesignIcon from "@tabler/icons/outline/palette.svg";
-import InstallationIcon from "@tabler/icons/outline/tool.svg";
-import MaintenanceIcon from "@tabler/icons/outline/settings.svg";
-import RenovationIcon from "@tabler/icons/outline/refresh.svg";
-import CustomIcon from "@tabler/icons/outline/puzzle.svg";
+import MarketingIcon from "@tabler/icons/outline/speakerphone.svg";
+import BrandingIcon from "@tabler/icons/outline/sparkles.svg";
+import ContentIcon from "@tabler/icons/outline/article.svg";
+import AnalyticsIcon from "@tabler/icons/outline/chart-bar.svg";
 
 // Get current language and translation function
 const lang = getLangFromUrl(Astro.url, Astro.currentLocale);
@@ -24,7 +24,7 @@ const t = useTranslations(lang);
 // Define services configuration with icons
 const services = [
     {
-        icon: ConsultationIcon,
+        icon: StrategyIcon,
         titleKey: "services.service1.title" as const,
         descriptionKey: "services.service1.description" as const,
     },
@@ -34,22 +34,22 @@ const services = [
         descriptionKey: "services.service2.description" as const,
     },
     {
-        icon: InstallationIcon,
+        icon: MarketingIcon,
         titleKey: "services.service3.title" as const,
         descriptionKey: "services.service3.description" as const,
     },
     {
-        icon: MaintenanceIcon,
+        icon: BrandingIcon,
         titleKey: "services.service4.title" as const,
         descriptionKey: "services.service4.description" as const,
     },
     {
-        icon: RenovationIcon,
+        icon: ContentIcon,
         titleKey: "services.service5.title" as const,
         descriptionKey: "services.service5.description" as const,
     },
     {
-        icon: CustomIcon,
+        icon: AnalyticsIcon,
         titleKey: "services.service6.title" as const,
         descriptionKey: "services.service6.description" as const,
     },

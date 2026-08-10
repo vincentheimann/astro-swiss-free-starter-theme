@@ -3,9 +3,9 @@
  */
 
 import type { ImageMetadata } from "astro";
-import alpinaSport from "../../assets/portfolio/liberer-le-mouton-heimvin.jpg";
-import jurisLeman from "../../assets/portfolio/wall-e-guide-typographe-suisse-heimvin.png";
-import hotelBellerive from "../../assets/images/fallback-image.png";
+import alpinaSport from "../../assets/portfolio/alpina-sport-ecommerce.webp";
+import jurisLeman from "../../assets/portfolio/juris-leman-website.webp";
+import hotelBellerive from "../../assets/portfolio/hotel-bellerive-booking.webp";
 
 export interface PortfolioProject {
     id: string;
