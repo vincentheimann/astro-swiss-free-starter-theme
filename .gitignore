@@ -25,3 +25,9 @@ pnpm-debug.log*
 
 # Graphify knowledge graph output
 graphify-out/
+
+# Playwright artifacts + scripted-capture output (rule 7: captures never
+# land in tracked folders directly; they are copied to their targets)
+test-results/
+playwright-report/
+captures/
