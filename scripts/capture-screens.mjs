@@ -29,7 +29,13 @@ async function serverUp() {
 }
 
 async function startPreview() {
-    if (await serverUp()) return null; // reuse a running preview server
+    if (await serverUp()) {
+        // Never shoot a server we didn't start — it might be another repo's
+        // site (daemonized dev servers share the default port).
+        throw new Error(
+            `something is already serving ${BASE} — stop it first so the capture run owns the server`,
+        );
+    }
     const child = spawn("npm", ["run", "preview"], {
         cwd: root,
         shell: true,

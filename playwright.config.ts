@@ -13,7 +13,10 @@ export default defineConfig({
     webServer: {
         command: "npm run preview",
         url: "http://localhost:4321",
-        reuseExistingServer: true,
+        // Never reuse a server we didn't start: a stray process on 4321
+        // (e.g. a daemonized dev server from another repo) would make every
+        // test silently run against the wrong site. Fail loudly instead.
+        reuseExistingServer: false,
         timeout: 60_000,
     },
 });
