@@ -5,6 +5,18 @@ All notable changes to the Astro Swiss Starter Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0](https://github.com/vincentheimann/astro-swiss-free-starter-theme/compare/astro-swiss-starter-theme-v2.0.0...astro-swiss-starter-theme-v2.1.0) (2026-09-28)
+
+
+### Features
+
+* add the agent workspace and reframe the premium pitch (ADR 0007) ([51579b7](https://github.com/vincentheimann/astro-swiss-free-starter-theme/commit/51579b7b4312a41bf680a55e5b4b857a05882688))
+
+
+### Bug Fixes
+
+* **team:** hide contact icons for empty email/phone values ([658daa4](https://github.com/vincentheimann/astro-swiss-free-starter-theme/commit/658daa4eddc781c8b9d2d887da41a51f72ed9f4d))
+
 ## [2.0.0](https://github.com/vincentheimann/astro-swiss-free-starter-theme/compare/astro-swiss-starter-theme-v1.0.0...astro-swiss-starter-theme-v2.0.0) (2026-08-10)
 
 
