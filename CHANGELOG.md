@@ -5,6 +5,13 @@ All notable changes to the Astro Swiss Starter Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.1](https://github.com/vincentheimann/astro-swiss-free-starter-theme/compare/astro-swiss-free-starter-theme-v2.1.0...astro-swiss-free-starter-theme-v2.1.1) (2026-09-28)
+
+
+### Bug Fixes
+
+* correct package identity and stale README content ([8b5d1ba](https://github.com/vincentheimann/astro-swiss-free-starter-theme/commit/8b5d1ba744627f4b90b7570662f0d5203248076b))
+
 ## [2.1.0](https://github.com/vincentheimann/astro-swiss-free-starter-theme/compare/astro-swiss-starter-theme-v2.0.0...astro-swiss-starter-theme-v2.1.0) (2026-09-28)
 
 
