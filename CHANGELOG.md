@@ -5,6 +5,27 @@ All notable changes to the Astro Swiss Starter Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0](https://github.com/vincentheimann/astro-swiss-free-starter-theme/compare/astro-swiss-free-starter-theme-v2.1.0...astro-swiss-free-starter-theme-v3.0.0) (2026-09-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* requires Node.js >= 22.12 (Astro 7 minimum).
+
+### Features
+
+* add the agent workspace and reframe the premium pitch (ADR 0007) ([51579b7](https://github.com/vincentheimann/astro-swiss-free-starter-theme/commit/51579b7b4312a41bf680a55e5b4b857a05882688))
+* designed license-clean demo imagery (portfolio, team, brand, og) ([d0e16ac](https://github.com/vincentheimann/astro-swiss-free-starter-theme/commit/d0e16ac96c6baf99b8470f1d7622aa59f3a05fb2))
+* upgrade core to Astro 7 and all dependencies to latest ([c009a4b](https://github.com/vincentheimann/astro-swiss-free-starter-theme/commit/c009a4bab73c3fabb511771e8ee54522b16ff152))
+
+
+### Bug Fixes
+
+* correct package identity and stale README content ([8b5d1ba](https://github.com/vincentheimann/astro-swiss-free-starter-theme/commit/8b5d1ba744627f4b90b7570662f0d5203248076b))
+* repair footer/meta company name, desktop nav, coherent demo portfolio (PB-014) ([9c4967a](https://github.com/vincentheimann/astro-swiss-free-starter-theme/commit/9c4967af5302d251a11bf28564f6cbaffaf7fb8f))
+* **team:** hide contact icons for empty email/phone values ([658daa4](https://github.com/vincentheimann/astro-swiss-free-starter-theme/commit/658daa4eddc781c8b9d2d887da41a51f72ed9f4d))
+* working locale detection and real 404s in production (PB-003) ([8730948](https://github.com/vincentheimann/astro-swiss-free-starter-theme/commit/87309485b852d5be488b7905a9d1ec1cc24cda46))
+
 ## [2.1.0](https://github.com/vincentheimann/astro-swiss-free-starter-theme/compare/astro-swiss-starter-theme-v2.0.0...astro-swiss-starter-theme-v2.1.0) (2026-09-28)
 
 

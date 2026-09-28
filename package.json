@@ -1,7 +1,7 @@
 {
   "name": "astro-swiss-free-starter-theme",
   "type": "module",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "The free Astro Swiss starter theme: a production-ready multilingual (FR/DE/EN) business theme with Starwind UI, Tailwind CSS v4, dark mode and an agent-friendly AGENTS.md workspace.",
   "keywords": [
     "astro",
