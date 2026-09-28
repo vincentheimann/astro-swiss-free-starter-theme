@@ -11,7 +11,9 @@
 > [!NOTE]
 > **Production Ready**: This free version is a complete, standalone product with **Astro 7**, **Tailwind 4**, and **i18n** built-in. It is not a "lite" version with broken features.
 >
-> *Looking for premium components, an embedded setup wizard, and a commercial license?* [See the Premium Version](https://astroswiss.com) — buy once at a low price, yours forever.
+> *Want your AI agent to do the work?* The [Premium Version](https://astroswiss.com) ships an agent workspace: open the folder in Claude Code, Cursor, Codex & co., describe your company, and get your configured site in one conversation — plus a commercial license and all updates to your major version included. **Buy once. Your agent does the rest.**
+>
+> This free theme is agent-friendly too: its `AGENTS.md` teaches your AI tool the theme's structure and conventions.
 
 ## 🚀 Quick Start
 
