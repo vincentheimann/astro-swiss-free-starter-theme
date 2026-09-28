@@ -70,13 +70,15 @@ const getActiveSocials = (
         },
         {
             key: "email",
-            url: "mailto:" + employee.email,
+            // Empty values must stay empty: a bare "mailto:"/"tel:" prefix
+            // would pass the non-empty filter below and render a dead icon.
+            url: employee.email ? "mailto:" + employee.email : "",
             icon: EmailIcon,
             label: t("contact.info.email"),
         },
         {
             key: "phone",
-            url: "tel:" + employee.phone,
+            url: employee.phone ? "tel:" + employee.phone : "",
             icon: PhoneIcon,
             label: t("contact.info.phone"),
         },
