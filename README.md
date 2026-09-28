@@ -1,8 +1,8 @@
-# Astro Swiss Starter Theme
+# Astro Swiss Free Starter Theme
 
 **A professional, multilingual foundation for proper Astro projects.**
 
-[![Version](https://img.shields.io/badge/version-1.0.0--free-blue.svg)](CHANGELOG.md) [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE) [![Changelog](https://img.shields.io/badge/changelog-keep--a--changelog-orange.svg)](CHANGELOG.md)
 
 [**🌐 Live Demo**](https://demo.astroswiss.com) | [**📖 Documentation**](https://docs.astroswiss.com) | [**💼 Premium Version**](https://astroswiss.com)
 
@@ -11,7 +11,7 @@
 > [!NOTE]
 > **Production Ready**: This free version is a complete, standalone product with **Astro 7**, **Tailwind 4**, and **i18n** built-in. It is not a "lite" version with broken features.
 >
-> *Want your AI agent to do the work?* The [Premium Version](https://astroswiss.com) ships an agent workspace: open the folder in Claude Code, Cursor, Codex & co., describe your company, and get your configured site in one conversation — plus a commercial license and all updates to your major version included. **Buy once. Your agent does the rest.**
+> *Want your AI agent to do the work?* The [Premium Version](https://astroswiss.com) ships an agent workspace with a one-command deterministic setup — verified with real setup runs in Claude Code, Cursor and Antigravity, built for any tool that reads AGENTS.md. Describe your company and get your configured site in one conversation — plus a commercial license and all updates to your major version included. **Buy once. Your agent does the rest.**
 >
 > This free theme is agent-friendly too: its `AGENTS.md` teaches your AI tool the theme's structure and conventions.
 
@@ -69,7 +69,7 @@ Detailed guides to help you customize and deploy.
 We use a standard, intuitive Astro structure:
 
 ```text
-astro-swiss-starter-theme/
+astro-swiss-free-starter-theme/
 ├── src/
 │   ├── components/    # Starwind UI components (Cards, Heroes, etc.)
 │   ├── data/          # Type-safe content (Team, Services, Portfolio)
@@ -102,5 +102,5 @@ We are committed to maintaining a high-quality open source foundation.
 
 - **Documentation**: [docs.astroswiss.com](https://docs.astroswiss.com)
 - **Issues**: [GitHub Issues](https://github.com/vincentheimann/astro-swiss-free-starter-theme/issues)
-- **Direct Support**: [Premium Support](mailto:hello@astroswiss.com).
+- **Purchase & licensing questions**: [hello@astroswiss.com](mailto:hello@astroswiss.com)
 
