@@ -1,7 +1,7 @@
 {
   "name": "astro-swiss-starter-theme",
   "type": "module",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A production-ready multilingual starter theme for Astro with Starwind UI, Tailwind CSS v4, and dark mode support. Perfect for agencies, portfolios, and professional services.",
   "keywords": [
     "astro",
